@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container">
-        <a class="navbar-brand" href="#">Workshops App</a>
+        <router-link class="navbar-brand" to="/">Workshops App</router-link>
         <button
           class="navbar-toggler"
           type="button"
@@ -17,10 +17,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
+              <router-link class="nav-link active" aria-current="page" to="/">Home</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/workshops">List of WorkShop</a>
+              <router-link class="nav-link" to="/workshops">List of WorkShop</router-link>
             </li>
           </ul>
         </div>
