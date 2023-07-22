@@ -1,18 +1,18 @@
 <template>
   <div>
     <div v-if="status === 'LOADING'">
-      <AppSpinner message="Please wait while we fetch workshop" />
+      <AppSpinner message="Please wait while we fetch workshops" />
     </div>
-
     <div v-else-if="status === 'ERROR'">
-      <AlertBox heading="Oops ! Some error Happened" theme="danger">
+      <!-- pass HTML content for the child (used in slot of child ) -->
+      <AppAlert heading="Oops! Some error occured" theme="danger">
         <p>{{ error.message }}</p>
-        <template v-slot:hint>
-          <small> Please try again later. Contact system Administrator If you continure seeing this error </small>
-        </template>
-      </AlertBox>
-    </div>
 
+        <template v-slot:hint>
+          <small>Please try again later. Contact system administrator if you continue seeing this error.</small>
+        </template>
+      </AppAlert>
+    </div>
     <div v-else>
       <h1>
         List of workshops
@@ -32,31 +32,33 @@
 </template>
 
 <script>
-import WorkshopCard from "./WorkshopCard";
-import { getWorkshopsByPage } from "@/services/workshops";
+import WorkshopCard from './WorkshopCard';
+import { getWorkshopsByPage } from '@/services/workshops';
+import AppAlert from './utils/AppAlert.vue';
+
 export default {
-  name: "WorkshopsList",
+  name: 'WorkshopsList',
   components: {
     WorkshopCard,
+    AppAlert,
   },
   data() {
     // console.log( 'component instantiated - data is being created' );
     return {
-      status: "LOADING",
+      status: 'LOADING',
       workshops: [],
       error: null,
       page: 1,
     };
   },
   methods: {
-    //this method will fetch the data
     async fetchWorkshops() {
       try {
         this.workshops = await getWorkshopsByPage(this.page);
-        this.status = "LOADED";
+        this.status = 'LOADED';
       } catch (error) {
         console.log(error.message);
-        this.status = "ERROR";
+        this.status = 'ERROR';
         this.error = error;
       }
     },

@@ -1,30 +1,42 @@
 import Router from 'vue-router';
 import AppHome from '../components/AppHome';
-import WorkShopsList from '../components/WorkShopsList';
-import WorkShopsDetails from '../components/WorkShopsDetails';
+import WorkshopsList from '../components/WorkshopsList';
+import WorkshopDetails from '../components/WorkshopDetails';
+import SessionsList from '../components/SessionsList';
+import AddSession from '../components/AddSession';
 
 // EXERCISE: Set up a component WorkshopDetails that appears on /workshops/1
-
 const router = new Router({
-    mode: 'history',
-    routes:[
+  mode: 'history',
+  routes: [
+    {
+      name: 'home',
+      path: '/',
+      component: AppHome,
+    },
+    {
+      name: 'workshops-list',
+      path: '/workshops',
+      component: WorkshopsList,
+    },
+    {
+      name: 'workshop-details',
+      path: '/workshops/:id',
+      component: WorkshopDetails,
+      children: [
         {
-           name:'home',
-           path: '/',
-           component:AppHome 
+          name: 'sessions-list',
+          path: '', // whatever comes after parent route (here nothing)
+          component: SessionsList,
         },
         {
-            name: 'workshops-list',
-            path: '/workshops',
-            component: WorkShopsList
+          name: 'add-session',
+          path: 'add', // whatever comes after parent route (here nothing)
+          component: AddSession,
         },
-        {
-            name: 'workshops-details',
-            path: '/workshops/1',
-            component: WorkShopsDetails
-        }
-
-    ]
+      ],
+    },
+  ],
 });
 
 export default router;

@@ -13,7 +13,7 @@ export default {
   props: {
     message: {
       type: String,
-      default: "Processing",
+      default: 'Processing',
     },
   },
 };

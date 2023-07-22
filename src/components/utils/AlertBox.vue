@@ -1,9 +1,13 @@
 <template>
   <div class="alert" :class="`alert-${theme}`" role="alert">
     <h4 class="alert-heading">{{ heading }}</h4>
-    <!-- this is default slot -->
+
+    <!-- the HTML content comes from the pafent component (this is the default slot) -->
+    <!-- you can have only 1 default slot -->
     <slot></slot>
-    <!-- this are named slots -->
+
+    <!-- named slots -->
+    <!-- you can have as many named slots -->
     <slot name="hint"></slot>
   </div>
 </template>
@@ -14,13 +18,14 @@ export default {
     heading: {
       type: String,
       required: true,
-      default: "Error here",
     },
     theme: {
       type: String,
       validator(value) {
-        //used for custom validation
-        const themes = ["primary", "secondary", "light", "dark", "info", "success", "warning", "danger"];
+        // custom validation
+        console.log('validate is running');
+        const themes = ['primary', 'secondary', 'light', 'dark', 'info', 'success', 'warning', 'danger'];
+
         return themes.includes(value);
       },
     },

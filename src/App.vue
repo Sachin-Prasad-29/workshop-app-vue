@@ -8,20 +8,27 @@
 </template>
 
 <script>
-import AppMenu from "./components/AppMenu";
-// import AppHome from './components/AppHome'
-// import WorkShopsList from './components/WorkShopsList'
+import AppMenu from './components/AppMenu.vue';
+// import AppHome from './components/AppHome.vue'
+// import WorkshopsList from './components/WorkshopsList.vue'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     AppMenu,
     // AppHome,
-    // WorkShopsList,
+    // WorkshopsList
   },
 };
 </script>
-#app { font-family: Avenir, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing:
-grayscale; text-align: center; color: #2c3e50; margin-top: 60px; }
 
-<style></style>
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
